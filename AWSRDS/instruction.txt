@@ -1,0 +1,13 @@
+
+Activity in tutorial
+
+1. create rds in aws 
+
+	access th Cloud-based database RDS on local database SQLWorkbench by connecting to the RDS DB 
+
+
+2. write SQL for inserting data into rds
+	
+	check if the data inserted also appeared in local database SQLWorkbench
+
+3. retrieve data from rds/copy of rds database in local database SQLWorkbench and transform the data retrieved using python

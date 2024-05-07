@@ -1,0 +1,107 @@
+-> Terminal `cd` to the path with all attachment of this tutorial, eg: `cd /Document/xx/xxx/`
+
+-> brew services start mysql
+
+-> mysql -u root -p
+## Type your pwd to login to mysql server as root.
+
+-> show databases; 
+## List the databases of the mysql server, to verify your login status;
+
+-> use mysql;
+## select the default db for current session, eg: mysql;
+
+-> show tables;
+## view the tables of the current db;
+## understand, most of the settings of mysql are stored in 'mysql' db, such as user list, etc; 
+
+-> select host, user from user;
+
+
+
+-> create database demo_db;
+
+-> use demo_db;
+
+-> CREATE TABLE demo_db.`athlete_events` (
+    `ID` int DEFAULT NULL,
+    `Name` text,
+    `Sex` text,
+    `Age` int DEFAULT NULL,
+    `Height` text,
+    `Weight` text,
+    `Team` text,
+    `NOC` text,
+    `Games` text,
+    `Year` int DEFAULT NULL,
+    `Season` text,
+    `City` text,
+    `Sport` text,
+    `Event` text,
+    `Medal` text
+    );
+
+-> CREATE TABLE demo_db.`noc_regions` (
+  `NOC` text,
+  `region` text,
+  `notes` text
+);
+
+-> show tables;
+
+
+## Load the data into created tables:
+
+LOAD DATA LOCAL INFILE 'noc_regions.csv'
+INTO TABLE demo_db.noc_regions
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE 'athlete_events.csv'
+INTO TABLE demo_db.athlete_events
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+## Troubleshooting: ERROR 3948 (42000): Loading local data is disabled; this must be enabled on both the client and server sides
+
+https://stackoverflow.com/questions/59993844/error-loading-local-data-is-disabled-this-must-be-enabled-on-both-the-client
+
+https://www.mysqltutorial.org/import-csv-file-mysql-table/
+https://stackoverflow.com/questions/59993844/error-loading-local-data-is-disabled-this-must-be-enabled-on-both-the-client
+
+
+
+
+
+
+-> Practice "Select"
+-> Practice "Where"
+-> Practice "Left join"
+-> Practice "Order By"
+
+
+
+# Chanllege:
+
+Try insert some test data;
+Try create other tables;
+
+
+
+## Try to understand the query below:
+with age_orders as(
+SELECT 
+    e.name, e.team, e.noc, e.Games, e.age,
+    e.year,
+    r.region, r.notes,
+    row_number() over (Partition by e.noc order by e.age asc) as age_order_in_team
+FROM
+    demo_db.athlete_events AS e
+        LEFT JOIN
+    demo_db.noc_regions AS r ON e.noc = r.noc
+    where e.age >0)
+    select * from age_orders where age_order_in_team < 10;
+
