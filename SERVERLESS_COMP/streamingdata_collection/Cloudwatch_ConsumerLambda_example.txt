@@ -1,0 +1,4 @@
+{'Records': [{'kinesis': {'kinesisSchemaVersion': '1.0', 'partitionKey': '55df1753-3fcb-45d8-852e-38bd86f6cffb', 'sequenceNumber': '49652837395435595649209520337246571925391996315703967794', 'data': 'eyJpZCI6ICI1NWRmMTc1My0zZmNiLTQ1ZDgtODUyZS0zOGJkODZmNmNmZmIiLCAiZGF0ZXRpbWUiOiAiMjAyNC0wNi0wOS0xMi01MC0xOCIsICJ2YWx1ZSI6ICI1NyJ9', 'approximateArrivalTimestamp': 1717937419.196}, 'eventSource': 'aws:kinesis', 'eventVersion': '1.0', 'eventID': 'shardId-000000000003:49652837395435595649209520337246571925391996315703967794', 'eventName': 'aws:kinesis:record', 'invokeIdentityArn': 'arn:aws:iam::975050066240:role/service-role/kinesisConsumer-role-y10wc4w0', 'awsRegion': 'ap-southeast-2', 'eventSourceARN': 'arn:aws:kinesis:ap-southeast-2:975050066240:stream/stream1'}]}
+
+
+This is an example output generated from Lambda function Consumer, availiable on the log file  as tracked in CloudWatch. 
